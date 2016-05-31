@@ -10,11 +10,12 @@
 		<form action="consultarcliente.html" method="post">
 			<div class="form-group">
 				Informe o CPF do usuário:
-				<input type="text" name="cpf" value="${cpf}" class="form-control"> 
+				<input type="text" name="cpf" value="222" class="form-control"> 
 			</div>
 			<input type="submit" value="BUSCAR" class="btn btn-info">
 		</form>
 		${msg}
+		
 	</div>
 	
 		
