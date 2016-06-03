@@ -1,77 +1,49 @@
-/* Roteiro
- * Falta consulta alterar e excluir cliente
- * Listar tabela com dados produto (resumo) e abrir em detalhes todos os dados
- * Falta altera��o nos dados do usu�rio/cliente
- * Falta exclus�o (como vou fazer isso?)
- * colocar senha criptografada com md5 no banco
- * 
- * Fazer o Manter produto
- * 
- * Montar a tela de pedido
- * TEMA para carrinho de compras no bootstrap
- * http://blog.neweb.co/Top-10-temas-de-inicializa%C3%A7%C3%A3o-ecommerce/?lang=pt
- * 
- * 
- * https://www.caelum.com.br/apostila-vraptor-hibernate/criando-o-carrinho-de-compras/#13-1-o-modelo-do-carrinho
- * MATERIAL muito bom : http://docente.ifrn.edu.br/fellipealeixo/disciplinas/tads-2012/desenvolvimento-de-sistemas-web
- * 
- * 
- * C�digo de banco 1062 - primary key j� existe
- * 
- * */
+DROP TABLE IF EXISTS VENDAS;
+DROP TABLE IF EXISTS USUARIO;
+DROP TABLE IF EXISTS VIAGEM;
+DROP TABLE IF EXISTS CARTAO_CREDITO;
 
-drop database if exists lojaonline;
+CREATE TABLE USUARIO(
+ID_USUARIO BIGSERIAL PRIMARY KEY NOT NULL,
+NOME TEXT NOT NULL,
+EMAIL TEXT NOT NULL,
+SENHA TEXT NOT NULL);
 
-create database lojaonline;
-
-use lojaonline;
-
-create table usuario(
-	email varchar(50) primary key, 
-	nome varchar(50) not null,
-	senha varchar(20) not null, /*senha - colocar criptografia*/
-	perfil char(3) not null, /* CLI, FUN, ADM*/ 
-	dtcadastro timestamp
+CREATE TABLE VIAGEM(
+ID_VIAGEM BIGSERIAL PRIMARY KEY NOT NULL,
+NOME TEXT,
+CIDADE TEXT,
+FOTO BYTEA,
+DESCRICAO TEXT,
+VALOR DECIMAL,
+DT_SAIDA TIMESTAMP,
+QUANTIDADE INTEGER
 );
-desc usuario;
 
-create table cliente(
-	cpf bigint primary key,	
-	id_email varchar(50) not null, 
-	dtnasc date,
-	sexo enum('M','F'),
-	telefone varchar(15),
-	celular varchar(15),
-	tpendereco int,
-	cep varchar(10),
-	endereco varchar(50),
-	numero int,
-	complemento varchar(50),
-	bairro varchar(25),
-	cidade varchar(25),
-	estado varchar(2),		
-	infref varchar(50),
-	foreign key(id_email) references usuario(email)
+CREATE TABLE CARTAO_CREDITO(
+ID_CARTAO_CREDITO BIGSERIAL PRIMARY KEY NOT NULL,
+NUM_CARTAO INTEGER,
+TITULAR_CARTAO TEXT,
+DT_VALIDADE DATE,
+COD_SEGURANCA INTEGER
 );
-desc cliente;
 
-create table produto(
-	codigo int auto_increment primary key,
-	descricao varchar(100),
-	categoria int,
-	marca varchar(40),
-	tamroupa varchar(3),
-	ntamroupa int,
-	tamcalcado int,
-	valor double(10,2) not null,
-	percdesconto double(3,1),
-	parcelamento enum('S','N'),
-	destaque enum('S','N'),
-	dtinicomerc date,
-	qtdestoque int,
-	foto1 varchar(50),
-	foto2 varchar(50),
-	foto3 varchar(50),
-	foto4 varchar(50)
-);	
-desc produto;
+CREATE TABLE VENDAS (
+ID_VENDAS BIGSERIAL PRIMARY KEY NOT NULL,
+QUANTIDADE INTEGER,
+CHECKIN TIMESTAMP,
+CPF TEXT,
+TELEFONE TEXT,
+DT_COMPRA TIMESTAMP,
+FK_USUARIO INTEGER,
+FK_VIAGEM INTEGER,
+FK_CARTAO_CREDITO INTEGER
+);
+
+ALTER TABLE VENDAS ADD FOREIGN KEY (FK_USUARIO) REFERENCES USUARIO(ID_USUARIO);
+ALTER TABLE VENDAS ADD FOREIGN KEY (FK_VIAGEM) REFERENCES VIAGEM(ID_VIAGEM);
+ALTER TABLE VENDAS ADD FOREIGN KEY (FK_CARTAO_CREDITO) REFERENCES CARTAO_CREDITO(ID_CARTAO_CREDITO);
+
+
+
+INSERT INTO USUARIO(ID_USUARIO, NOME, EMAIL, SENHA) VALUES (1, 'admin', 'admin@gmail.com', '123');

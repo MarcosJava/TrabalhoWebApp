@@ -34,18 +34,19 @@ public class LoginController extends AbstractController {
 	
 	private void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		
 		try {
 			
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
 			Usuario usuario = this.usuarioDao.buscarUsuario(email, senha);
 			
+			//Se o usuario for nullo, avisa que nao existe esse usuario.
+			//Se existir mostra o sistema para o usuário.
 			if(usuario != null){				
 				System.out.println(usuario.toString());
 				super.setUsuarioSessao(usuario, request);
 				request.setAttribute("msg", super.getUsuarioSessao(request).getEmail());
-				request.getRequestDispatcher(ConstantsController.PAGE_COMPRAR).forward(request,response);
+				request.getRequestDispatcher(ConstantsController.PAGE_INTERNA_INICIAL).forward(request,response);
 				
 			} else {
 				request.setAttribute("msgErro", super.getMensagemError(ConstantsController.MSG_LOGIN_INVALIDO));

@@ -1,6 +1,7 @@
 package model.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 public class Usuario implements Serializable {
@@ -14,6 +15,8 @@ public class Usuario implements Serializable {
 	private String email;
 	private String nome;
 	private String senha;
+	
+	private List<Venda> vendas;
 	
 	
 	/******
@@ -74,6 +77,14 @@ public class Usuario implements Serializable {
 
 	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+	
+	public List<Venda> getVendas() {
+		return vendas;
+	}
+
+	public void setVendas(List<Venda> vendas) {
+		this.vendas = vendas;
 	}
 
 	@Override
