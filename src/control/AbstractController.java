@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import model.entity.Usuario;
 
-@SuppressWarnings("serial")
 public class AbstractController extends HttpServlet {
 	
     public AbstractController() {

@@ -1,6 +1,7 @@
 package model.entity;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 
 public class Viagem implements Serializable{
@@ -14,6 +15,7 @@ public class Viagem implements Serializable{
 	private Date saida;
 	private Integer quantidade;
 	private String cidade;
+	private Float valor;
 	
 	
 	/***
@@ -26,6 +28,10 @@ public class Viagem implements Serializable{
 	public final static String SAIDA = "dt_saida";
 	public final static String QUANTIDADE = "quantidade";
 	public final static String CIDADE = "cidade";
+	public static final String TABELA = "Viagem";
+	public static final String VALOR = "Valor";
+
+	public static final String SEQUENCE = "seq_id_viagem";
 	
 	
 	
@@ -45,16 +51,16 @@ public class Viagem implements Serializable{
 	 * @param saida
 	 * @param quantidade
 	 */
-	public Viagem(Long idViagem, String nome, byte[] foto, String descricao,
-			Date saida, Integer quantidade, String cidade) {
+	public Viagem(Long idViagem, String nome, String descricao,
+			Date saida, Integer quantidade, String cidade, Float valor) {
 		super();
 		this.idViagem = idViagem;
 		this.nome = nome;
-		this.foto = foto;
 		this.descricao = descricao;
 		this.saida = saida;
 		this.quantidade = quantidade;
 		this.cidade = cidade;
+		this.valor = valor;
 	}
 	
 	
@@ -70,6 +76,15 @@ public class Viagem implements Serializable{
 		this.idViagem = idViagem;
 	}
 	
+	
+	public Float getValor() {
+		return valor;
+	}
+
+	public void setValor(Float valor) {
+		this.valor = valor;
+	}
+
 	public String getCidade() {
 		return cidade;
 	}
@@ -138,6 +153,14 @@ public class Viagem implements Serializable{
 		} else if (!idViagem.equals(other.idViagem))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Viagem [idViagem=" + idViagem + ", nome=" + nome + ", foto="
+				+ Arrays.toString(foto) + ", descricao=" + descricao
+				+ ", saida=" + saida + ", quantidade=" + quantidade
+				+ ", cidade=" + cidade + ", valor=" + valor + "]";
 	}
 	
 	

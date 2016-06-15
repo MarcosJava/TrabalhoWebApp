@@ -6,13 +6,6 @@ import model.entity.Usuario;
 
 public class UsuarioDao extends Dao{
 	
-	
-	
-	
-	
-	
-	
-
 	public Usuario buscarUsuario(String email, String senha) throws Exception{
 		
 		Usuario usuario = null;
