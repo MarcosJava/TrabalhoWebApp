@@ -49,7 +49,7 @@ public class LoginController extends AbstractController {
 				request.getRequestDispatcher(ConstantsController.PAGE_INTERNA_INICIAL).forward(request,response);
 				
 			} else {
-				request.setAttribute("msgErro", super.getMensagemError(ConstantsController.MSG_LOGIN_INVALIDO));
+				request.setAttribute("msgErro", super.setMensagemError(ConstantsController.MSG_LOGIN_INVALIDO));
 				request.getRequestDispatcher(ConstantsController.PAGE_LOGIN).forward(request, response);
 			}
 			

@@ -83,7 +83,7 @@
 		  
 		  <!-- Botoes -->
 		  <div class="col-md-4">
-		  		<form>
+		  		<form action="ComprarController">
 		  		
 		  		  <!-- valor -->
 				  <div class="form-group">
@@ -95,7 +95,7 @@
 				  </div> <!-- end:valor -->
 				  
 				  <div class="form-group">
-					  <select class="form-control" id="selQuantiade">
+					  <select class="form-control" id="selQuantiade" name="qtdEscolhido">
 					    <option>Quantidade</option>
 					    <c:forEach begin="1" end="${item.quantidade}" varStatus="no">
 					       <option value='<c:out value="${no.count}"/>'><c:out value="${no.count}"/></option>

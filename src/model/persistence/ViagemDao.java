@@ -90,8 +90,6 @@ public class ViagemDao extends Dao {
 		try {
 			stmt = con.prepareStatement("SELECT * FROM viagem v where v.cidade = ? AND v.dt_saida > now() ");
 			stmt.setString(1, cidade);
-//			Date date = new Date(new java.util.Date().getTime());
-//			stmt.setDate(2, date);
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
@@ -113,6 +111,36 @@ public class ViagemDao extends Dao {
 		}
 	}
 	
+	
+	public Viagem buscarViagemPeloID(String id) throws Exception {
+		try {
+			open();
+			stmt = con.prepareStatement("SELECT * FROM viagem v where " + Viagem.ID_VIAGEM + "= ?");
+			stmt.setLong(1, new Long(id));
+			rs = stmt.executeQuery();
+			Viagem v = null;
+			if (rs.next()) {
+				
+				 v = new Viagem(rs.getLong(Viagem.ID_VIAGEM),
+									  rs.getString(Viagem.NOME),
+									  rs.getString(Viagem.DESCRICAO), 
+									  rs.getDate(Viagem.SAIDA), 
+									  rs.getInt(Viagem.QUANTIDADE), 
+									  rs.getString(Viagem.CIDADE), 
+									  rs.getFloat(Viagem.VALOR));
+				
+			}
+
+			stmt.close();
+			close();
+			return v;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			close();
+			return null;
+		}
+	}
 	public List<Viagem> buscarViagensPorCidadeParaVenda(String cidade) throws Exception {
 		try {
 			open();

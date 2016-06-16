@@ -24,7 +24,7 @@ public class AbstractController extends HttpServlet {
 		return usuario;
 	}
 	
-	protected String getMensagemError(String mensagem) {
+	protected String setMensagemError(String mensagem) {
 		
 		if(mensagem.trim().isEmpty()) return null;
 		
