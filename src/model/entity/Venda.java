@@ -32,6 +32,8 @@ public class Venda implements Serializable{
 	public final static String FK_USUARIO = "fk_usuario";
 	public final static String FK_VIAGEM = "fk_viagem";
 	public final static String FK_CARTAO_CREDITO = "fk_cartao_credito";
+	public static final String TABELA = "vendas";
+	public static final String SEQUENCE = "seq_id_vendas";
 
 	
 	

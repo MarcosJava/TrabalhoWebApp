@@ -4,29 +4,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
-
 <head>
+
+	<title>Turismo</title>
 	<jsp:include page="tagHeader.jsp"></jsp:include>
-	<!-- LINK PARA O ARQUIVO JAVA SCRIPT DO PROJETO -->
 	<script src="../js/cadastrarProduto.js"></script>
 </head>
-
-
 <body>
 
 <jsp:include page="topo.jsp"></jsp:include>
-
-<div id="main" class="container"> <!-- CONTAINER BS -->
-
 
 <h1>Cadastro de Produto</h1>
 
 
 ${msg}
 
-<form name="formproduto" id="formproduto" action="/AppWeb/jsp/CadastrarProduto/" >
+<form name="formproduto" id="formproduto" action="/AppWeb/CadastrarProduto" method="post">
 
 	<fieldset>	
 		<legend class="control-label">Dados do Produto</legend>		
@@ -95,8 +90,4 @@ ${msg}
 </form>
 <hr>
 
-</div>
-
-</body>
-</html>
-
+<jsp:include page="rodape.jsp"></jsp:include>

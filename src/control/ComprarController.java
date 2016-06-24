@@ -37,20 +37,23 @@ public class ComprarController extends AbstractController {
 			if (request.getParameter("id") != null || !request.getParameter("id").isEmpty()){
 				
 				ViagemDao viagemDao = new ViagemDao();
-				Viagem viagem = viagemDao.buscarViagemPeloID(request.getParameter("id"));
+				Viagem viagem = viagemDao.buscarViagemPeloID(new Long(request.getParameter("id")));
 				
 				if (viagem == null){
 					request.setAttribute("error", super.setMensagemError(ERROR_PRODUTO));
+					
 					request.getRequestDispatcher("/jsp/comprar.jsp").forward(request, response);
+					
 				}
-				request.setAttribute("viagem", viagem);
 				
-				System.out.println(viagem);
+				request.setAttribute("viagem", viagem);
 				request.setAttribute("error", "");
 				request.setAttribute("qtdEscolhido", request.getParameter("qtdEscolhido"));
+				
 				request.getRequestDispatcher("/jsp/comprar.jsp").forward(request, response);
 			} else {
 				request.setAttribute("error", super.setMensagemError(ERROR_PRODUTO));
+				
 				request.getRequestDispatcher("/jsp/comprar.jsp").forward(request, response);
 			}
 			

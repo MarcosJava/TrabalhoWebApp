@@ -8,7 +8,7 @@ public class CartaoCredito implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Long idCartaoCredito;
-	private Integer numCartao;
+	private String numCartao;
 	private String titular;
 	private Date dataValidade;
 	private Integer codSeguranca;
@@ -21,6 +21,8 @@ public class CartaoCredito implements Serializable{
 	public final static String TITULAR_CARTAO = "titular_cartao";
 	public final static String DATA_VALIDADE = "dt_validade";
 	public final static String COD_SEGURANCA = "cod_seguranca";
+	public static final String TABELA = "cartao_credito";
+	public static final String SEQUENCE = "seq_id_cartao_credito";
 	
 	
 	
@@ -39,7 +41,7 @@ public class CartaoCredito implements Serializable{
 	 * @param dataValidade
 	 * @param codSeguranca
 	 */
-	public CartaoCredito(Long idCartaoCredito, Integer numCartao,
+	public CartaoCredito(Long idCartaoCredito, String numCartao,
 			String titular, Date dataValidade, Integer codSeguranca) {
 		super();
 		this.idCartaoCredito = idCartaoCredito;
@@ -64,11 +66,11 @@ public class CartaoCredito implements Serializable{
 		this.idCartaoCredito = idCartaoCredito;
 	}
 
-	public Integer getNumCartao() {
+	public String getNumCartao() {
 		return numCartao;
 	}
 
-	public void setNumCartao(Integer numCartao) {
+	public void setNumCartao(String numCartao) {
 		this.numCartao = numCartao;
 	}
 
@@ -135,4 +137,16 @@ public class CartaoCredito implements Serializable{
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "CartaoCredito [idCartaoCredito=" + idCartaoCredito
+				+ ", numCartao=" + numCartao + ", titular=" + titular
+				+ ", dataValidade=" + dataValidade + ", codSeguranca="
+				+ codSeguranca + "]";
+	}
+
+	
+	
+	
+	
 }

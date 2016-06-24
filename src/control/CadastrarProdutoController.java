@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,7 +12,7 @@ import model.entity.Viagem;
 import model.persistence.ViagemDao;
 
 @WebServlet({"/CadastrarProduto","/jsp/CadastrarProduto/ajaxEnviar","/jsp/CadastrarProduto/"})
-public class CadastrarProdutoController extends HttpServlet {
+public class CadastrarProdutoController extends AbstractController {
 	private static final long serialVersionUID = 1L;
        
     public CadastrarProdutoController() {
@@ -56,14 +55,14 @@ public class CadastrarProdutoController extends HttpServlet {
 			viagemDao.insertViagem(viagem);
 			
 			
-			request.setAttribute("msg", "<div class='alert alert-success' role='alert'> Produto cadastrado com sucesso !</div>");
-			request.getRequestDispatcher("/jsp/cadastrarProduto.jsp").forward(request, response);
+			request.setAttribute("msg", super.setMensagemError("Produto cadastrado com sucesso !"));
+			request.getRequestDispatcher(ConstantsController.PAGE_CADASTRAR_PRODUTO).forward(request, response);
 			
 			
 		} catch (Exception e) {
 			
-			request.setAttribute("msg", "<div class='alert alert-danger' role='alert'> ERRO AO CADASTRAR PRODUTO !</div>");
-			request.getRequestDispatcher("/jsp/cadastrarProduto.jsp").forward(request, response);
+			request.setAttribute("msg", super.setMensagemError("Ocorreu algum erro!"));
+			request.getRequestDispatcher(ConstantsController.PAGE_CADASTRAR_PRODUTO).forward(request, response);
 		}
 		
 	}

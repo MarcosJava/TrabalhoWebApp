@@ -8,6 +8,8 @@ $(function() {
     $("#idTelefone").mask("(99) 99999-9999");
     //$("#idCelular").mask("(99) 99999-9999");
     $("#idCPF").mask("999.999.999-99");
+    $(".codSeguranca").mask("999");
+    $(".numCartaoCredito").mask("9999.9999.9999.9999");
     //$("#cep").mask("99.999-999");
     //$(".hora").mask("99:99");
    // $(".sonums").mask("9?9999"); //depois da interrogação é tudo opcional

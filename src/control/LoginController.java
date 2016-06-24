@@ -32,7 +32,7 @@ public class LoginController extends AbstractController {
 		execute(request, response);
 	}
 	
-	private void execute(HttpServletRequest request, HttpServletResponse response) {
+	protected void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		try {
 			

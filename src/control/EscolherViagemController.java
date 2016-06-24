@@ -28,13 +28,7 @@ public class EscolherViagemController extends AbstractController {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		execute(request, response);
-	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		execute(request, response);
-	}
 
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

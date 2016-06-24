@@ -28,6 +28,8 @@ public class Usuario implements Serializable {
 	public final static String EMAIL = "email";
 	public final static String SENHA = "senha";
 	public final static String NOME = "nome";
+	public static final String SEQUENCE = "seq_id_usuario";
+	public static final String TABELA = "USUARIO";
 	
 	
 	

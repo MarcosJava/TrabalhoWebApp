@@ -20,9 +20,12 @@
 <h3 class="page-header">TURISMO LEGAL</h3>
 
 <c:choose>
-	<c:when test="${error.equals('')}">
-				
-		<form class="form-inline" action="#" method="post">
+	<c:when test="${!error.equals('')}">
+		${error }	
+	</c:when>
+	<c:otherwise>
+		
+		<form class="form-inline" action="RealizarCompraController" method="post">
 			
 			
 			<div class="row">
@@ -55,8 +58,28 @@
 											  <!-- Quantidade -->
 											  <div class="form-group">
 												  <label for="idQuantidade">Quantidade: </label>
-												  <input type="text" value="${qtdEscolhido}" readonly class="form-control"/>
-											  </div>
+												  <input type="text" 
+												  		 value="${qtdEscolhido}" 
+												  		 readonly 
+												  		 class="form-control"
+												  		 name="qtdViagem"/>
+											  </div><!-- End quantidade -->
+											  <br /><br />
+											  
+											   <!-- valor -->
+											  <div class="form-group">
+											  	<label >Total : </label>
+											    <label class="sr-only" for="valor">Amount (in dollars)</label>
+											    <div class="input-group">
+											      <div class="input-group-addon">R$</div>
+											      <input type="text" 
+											      		 class="form-control" 
+											      		 value='<fmt:formatNumber value="${viagem.valor * qtdEscolhido}" type="currency" />'" 
+											      		 id="valor" 
+											      		 placeholder="Amount" 
+											      		 readonly="readonly">
+											    </div>
+											  </div> <!-- end:valor -->
 											
 									  </div> <!-- col-md4 end -->
 								  </div>
@@ -157,7 +180,7 @@
 					<div class="col-md-12">
 						<div class="form-group col-md-6">
 							<label for="idNumCartao">Número Cartao</label>
-							<input type="text" class="form-control" name="numCartao" id="idNumCartao"/>
+							<input type="text" class="form-control numCartaoCredito" name="numCartao" id="idNumCartao"/>
 						</div>
 						
 						<div class="form-group col-md-6">
@@ -178,7 +201,7 @@
 						
 						<div class="form-group col-md-6">
 							<label for="idCdSeg">Código Segurança</label>
-							<input type="text" class="form-control" name="codSeguranca" id="idCdSeg"/>
+							<input type="text" class="form-control codSeguranca" name="codSeguranca" id="idCdSeg" "/>
 						</div>
 					</div>
 				</div><!-- row end -->
@@ -191,7 +214,7 @@
 						
 						<div class="form-group col-md-4">
 							<input type="hidden" name="idViagem" value="${viagem.idViagem }">
-							<button type="button" class="btn btn-primary">Finalizar Compra</button>
+							<button type="submit" class="btn btn-primary">Finalizar Compra</button>
 						</div>
 						
 						<div class="form-group col-md-4">
@@ -203,10 +226,7 @@
 			</div><!-- Div CC -->
 			
 		</form>
-	</c:when>
-	<c:otherwise>
-		${error }
-	
+		
 	</c:otherwise>
 </c:choose>	
 	

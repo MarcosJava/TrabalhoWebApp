@@ -30,7 +30,6 @@ public class Viagem implements Serializable{
 	public final static String CIDADE = "cidade";
 	public static final String TABELA = "Viagem";
 	public static final String VALOR = "Valor";
-
 	public static final String SEQUENCE = "seq_id_viagem";
 	
 	
@@ -161,6 +160,19 @@ public class Viagem implements Serializable{
 				+ Arrays.toString(foto) + ", descricao=" + descricao
 				+ ", saida=" + saida + ", quantidade=" + quantidade
 				+ ", cidade=" + cidade + ", valor=" + valor + "]";
+	}
+
+	public void diminuirQuantidade(Integer qtdeViagem) throws Exception {
+		
+		if (getQuantidade() >= 0 || 
+				(getQuantidade() - qtdeViagem) >= 0){
+			
+			setQuantidade(getQuantidade() - qtdeViagem);
+			
+		} else {
+			throw new Exception("Não contém quantidade para diminuir");
+		}
+		
 	}
 	
 	
