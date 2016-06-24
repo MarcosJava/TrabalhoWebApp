@@ -4,6 +4,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+
+<c:set var="req" value="${pageContext.request}" />
+<c:set var="uri" value="${req.requestURI}" />
+<c:set var="url">${req.requestURL}</c:set>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +27,7 @@
  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-
+<script src="../js/listaViagem.js"></script>
 
 
 
@@ -35,8 +42,8 @@
 
 <jsp:include page="topo.jsp"></jsp:include>
 
-	<form action="/AppWeb/ListaViagemController" method="get">
-		<input type="submit" name="ok" value="sim" id="submit"/>
+	<form action="/AppWeb/ListaViagemController/excluir?id=0" method="get">
+		<input type="submit" id="submit"/>
 	</form>
 
 <h3 class="page-header">TURISMO LEGAL</h3>
@@ -65,7 +72,7 @@
 					<td>${viagem.quantidade}</td>
 					<td>
 						<a  href="/AppWeb/ListaViagemController/excluir?id=${viagem.idViagem }" type="button" class="btn btn-default" aria-label="Left Align">
-						  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> XXX
+						  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 						</a>
 					</td>	
 				</tr>

@@ -22,7 +22,7 @@
 						aria-expanded="false">Produto <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/AppWeb/jsp/CadastrarProduto.jsp">Cadastro</a></li>
-							<li><a href="/AppWeb/jsp/listaViagem.jsp">Listar</a></li>
+							<li><a href="/AppWeb/jsp/ListaViagemController">Listar</a></li>
 						</ul>
 					</li>
 				</ul>

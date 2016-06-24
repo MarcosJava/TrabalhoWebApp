@@ -21,7 +21,7 @@
 
 ${msg}
 
-<form name="formproduto" id="formproduto" action="/AppWeb/CadastrarProduto" method="post">
+<form name="formproduto" id="formproduto" action="/AppWeb/CadastrarProduto/cadastro" method="post">
 
 	<fieldset>	
 		<legend class="control-label">Dados do Produto</legend>		
@@ -73,7 +73,7 @@ ${msg}
 			<div class="form-group col-md-3">
 				<label for="inputdefault">Data saída:</label>
 				<input type="text" class="form-control data" name="dtSaida" id="dataproduto"
-				maxlength="10" size="10" />				
+				maxlength="10" size="10" readonly="readonly"/>				
 			</div>
 		</div>
 		

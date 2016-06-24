@@ -1,4 +1,4 @@
 $(function() {
 	$("#submit").hide();
-	$("#submit").click();
+	//$("#submit").click();
 });

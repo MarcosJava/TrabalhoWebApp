@@ -3,7 +3,6 @@ package control;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,14 +34,14 @@ public class ListaViagemController extends AbstractController{
 		System.out.println(url);	
 		
 		
-		if(request.getParameter("ok") != null && request.getParameter("ok").trim().equals("sim")){
-			loading(request, response);
-		}
+		
 		
 		if(url.trim().equals("/ListaViagemController/excluir")){
 			excluir(request, response);
-			
-		} 		
+		}
+		if(url.trim().equals("/jsp/ListaViagemController")){
+			loading(request, response);
+		}
 	}
 	
 	private void loading(HttpServletRequest request,

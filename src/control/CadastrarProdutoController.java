@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.entity.Viagem;
 import model.persistence.ViagemDao;
 
-@WebServlet({"/CadastrarProduto","/jsp/CadastrarProduto/ajaxEnviar","/jsp/CadastrarProduto/"})
+@WebServlet({"/CadastrarProduto","/CadastrarProduto/cadastro"})
 public class CadastrarProdutoController extends AbstractController {
 	private static final long serialVersionUID = 1L;
        
@@ -33,31 +33,37 @@ public class CadastrarProdutoController extends AbstractController {
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			String cidade = request.getParameter("cidade");
-			String descricao = request.getParameter("descricao");
-			String nome = request.getParameter("nome");
-			String quantidade = request.getParameter("quantidade");
-			String valor = request.getParameter("valor");
-			String saida = request.getParameter("dtSaida");
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			
-			Viagem viagem = new Viagem(null, 
-									   nome, 
-									   descricao, 
-									   sdf.parse(saida), 
-									   Integer.parseInt(quantidade), 
-									   cidade, 
-									   Float.parseFloat(valor));
-			
-			System.out.println(viagem);
-			
-			ViagemDao viagemDao = new ViagemDao();
-			viagemDao.insertViagem(viagem);
 			
 			
-			request.setAttribute("msg", super.setMensagemError("Produto cadastrado com sucesso !"));
-			request.getRequestDispatcher(ConstantsController.PAGE_CADASTRAR_PRODUTO).forward(request, response);
+			String url = request.getServletPath();
+			System.out.println(url);	
+			if(url.trim().equals("/CadastrarProduto/cadastro")){
 			
+				String cidade = request.getParameter("cidade");
+				String descricao = request.getParameter("descricao");
+				String nome = request.getParameter("nome");
+				String quantidade = request.getParameter("quantidade");
+				String valor = request.getParameter("valor");
+				String saida = request.getParameter("dtSaida");
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				
+				Viagem viagem = new Viagem(null, 
+										   nome, 
+										   descricao, 
+										   sdf.parse(saida), 
+										   Integer.parseInt(quantidade), 
+										   cidade, 
+										   Float.parseFloat(valor));
+				
+				System.out.println(viagem);
+				
+				ViagemDao viagemDao = new ViagemDao();
+				viagemDao.insertViagem(viagem);
+				
+				
+				request.setAttribute("msg", super.setMensagemInfo("Produto cadastrado com sucesso !"));
+				request.getRequestDispatcher(ConstantsController.PAGE_CADASTRAR_PRODUTO).forward(request, response);
+			}
 			
 		} catch (Exception e) {
 			
