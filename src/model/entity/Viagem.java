@@ -1,7 +1,6 @@
 package model.entity;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Date;
 
 public class Viagem implements Serializable{
@@ -10,7 +9,7 @@ public class Viagem implements Serializable{
 	
 	private Long idViagem;
 	private String nome;
-	private byte[] foto;
+	private Integer foto;
 	private String descricao;
 	private Date saida;
 	private Integer quantidade;
@@ -98,10 +97,10 @@ public class Viagem implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public byte[] getFoto() {
+	public Integer getFoto() {
 		return foto;
 	}
-	public void setFoto(byte[] foto) {
+	public void setFoto(Integer foto) {
 		this.foto = foto;
 	}
 	public String getDescricao() {
@@ -154,12 +153,14 @@ public class Viagem implements Serializable{
 		return true;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "Viagem [idViagem=" + idViagem + ", nome=" + nome + ", foto="
-				+ Arrays.toString(foto) + ", descricao=" + descricao
-				+ ", saida=" + saida + ", quantidade=" + quantidade
-				+ ", cidade=" + cidade + ", valor=" + valor + "]";
+				+ foto + ", descricao=" + descricao + ", saida=" + saida
+				+ ", quantidade=" + quantidade + ", cidade=" + cidade
+				+ ", valor=" + valor + "]";
 	}
 
 	public void diminuirQuantidade(Integer qtdeViagem) throws Exception {

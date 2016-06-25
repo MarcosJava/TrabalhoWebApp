@@ -69,7 +69,7 @@
 					<div class="panel-body">
 						<div class="media">
 						  <div class="media-left media-middle">
-						      <img class="media-object" src="../img/london.jpg" alt="..." style="width:160px; heigth:160px;">
+						      <img class="media-object" src="../img/${item.foto }.jpeg" alt="..." style="width:160px; heigth:160px;">
 						  </div>
 						  <div class="media-body">
 						    <h4 class="media-heading">${item.nome}</h4>

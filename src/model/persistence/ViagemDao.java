@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import model.entity.Viagem;
 
@@ -109,7 +110,7 @@ public class ViagemDao extends Dao {
 			stmt = con.prepareStatement("SELECT * FROM viagem v WHERE v.dt_saida > NOW()");
 			rs = stmt.executeQuery();
 
-			
+			Random gerador = new Random();
 
 			while (rs.next()) {
 				
@@ -120,6 +121,9 @@ public class ViagemDao extends Dao {
 									  rs.getInt(Viagem.QUANTIDADE), 
 									  rs.getString(Viagem.CIDADE), 
 									  rs.getFloat(Viagem.VALOR));
+				
+				
+				v.setFoto(gerador.nextInt(11));
 				viagens.add(v);
 			}
 
@@ -183,7 +187,7 @@ public class ViagemDao extends Dao {
 			stmt = con.prepareStatement("SELECT * FROM viagem v where v.cidade = ? AND v.dt_saida > now() ");
 			stmt.setString(1, cidade);
 			rs = stmt.executeQuery();
-
+			Random gerador = new Random();
 			while (rs.next()) {
 				
 				Viagem v = new Viagem(rs.getLong(Viagem.ID_VIAGEM),
@@ -193,6 +197,7 @@ public class ViagemDao extends Dao {
 									  rs.getInt(Viagem.QUANTIDADE), 
 									  rs.getString(Viagem.CIDADE), 
 									  rs.getFloat(Viagem.VALOR));
+				v.setFoto(gerador.nextInt(11));
 				viagens.add(v);
 			}
 

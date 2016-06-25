@@ -6,10 +6,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 
-<c:set var="req" value="${pageContext.request}" />
-<c:set var="uri" value="${req.requestURI}" />
-<c:set var="url">${req.requestURL}</c:set>
-
 
 <!DOCTYPE html>
 <html>
@@ -64,10 +60,13 @@
 			<tbody>
 				<c:forEach items="${viagens}" var="viagem">
 				<tr>
+				
+					
+				
 					<th scope="row">${viagem.idViagem }</th>
 					<td>${viagem.nome }</td>
 					<td>${viagem.cidade }</td>
-					<td>${viagem.descricao }</td>
+					<td><c:out value='${viagem.descricao }'/></td>
 					<td>${viagem.valor }</td>
 					<td>${viagem.quantidade}</td>
 					<td>

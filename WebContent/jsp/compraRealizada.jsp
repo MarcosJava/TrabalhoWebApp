@@ -38,12 +38,12 @@
 						      <img class="media-object" src="../img/london.jpg" alt="..." style="width:160px; heigth:160px;">
 						  </div>
 						  <div class="media-body">
-						    <h4 class="media-heading">nome</h4>
+						    <h4 class="media-heading">${nome}</h4>
 							    <div class="col-md-12">
 							  		<div class="panel panel-default">
   										<div class="panel-body">
-									  		<p class="textoFinal">${nome}, boa viagem! Sua compra para ${qtde} pessoa(s) no pacote </p> 
-									  		<p class= "textoFinal"> " ${descricao}",  foi finalizada !</p>
+									  		<p class="textoFinal">Boa viagem! Sua compra para ${qtde} pessoa(s) no pacote </p> 
+									  		<p class= "textoFinal"> " ${descricao}",  foi finalizada!</p>
 							  			</div> <!-- panel -body -->
 							  		</div> <!-- panel-default  -->
 							  	</div> <!-- col-md4 end -->
